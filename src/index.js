@@ -28,10 +28,11 @@ class Board extends React.Component {
   }
 
   render() {
+    //5x5
     const size = 5;
 
     //3x3
-    //const size = 3;
+    // const size = 3;
     let squares = [];
     for (let i = 0; i < size; ++i) {
       let row = [];
@@ -74,6 +75,10 @@ class Game extends React.Component {
     this.state = {
       history: [
         {
+          //3x3
+          // squares: Array(9).fill(null),
+
+          //5x5
           squares: Array(25).fill(null),
           position: null,
         },
@@ -88,7 +93,7 @@ class Game extends React.Component {
     const history = this.state.history.slice(0, this.state.stepNumber + 1);
     const current = history[history.length - 1];
     const squares = current.squares.slice();
-
+    //5x5
     if (calculateWinnerFor5x5(squares) || squares[i]) {
       return;
     }
@@ -127,6 +132,7 @@ class Game extends React.Component {
   render() {
     let history = this.state.history;
     const current = history[this.state.stepNumber];
+    //5x5
     const winner = calculateWinnerFor5x5(current.squares);
 
     //3x3
@@ -174,6 +180,7 @@ class Game extends React.Component {
     if (winner) {
       status = "Winner: " + winner.winner;
     } else {
+      console.log(current.squares);
       if (!current.squares.includes(null)) {
         status = "DRAW. No winner";
         // this.setState({ isEnd: true });
@@ -302,9 +309,9 @@ function calculateWinnerFor5x5(squares) {
       }
       console.log("line", line);
       console.log("i", i);
-      if (flag === -size) {
+      if (flag === size) {
         return { winner: "X", line: line };
-      } else if (flag === size) {
+      } else if (flag === -size) {
         return { winner: "O", line: line };
       }
     }
