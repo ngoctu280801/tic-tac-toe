@@ -31,7 +31,6 @@ class Board extends React.Component {
     //5x5
     const size = 5;
 
-    //3x3
     // const size = 3;
     let squares = [];
     for (let i = 0; i < size; ++i) {
